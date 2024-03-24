@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoMdAdd, IoMdSearch } from "react-icons/io";
 const Navbar = (props) => {
   const navigate = useNavigate();
-  console.log("Search User",props.user)
   if (!props.user) return null;
   return (
     <div className="flex gap-2 md:gap-5 w-full mt-5 pb-7">
