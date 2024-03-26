@@ -12,6 +12,7 @@ const Pin = (props) => {
   const [postHovered, setPostHovered] = useState(false);
   const navigate = useNavigate();
   const user = fetchUser();
+
   const alreadySaved = !!props.pin?.save?.filter(
     (item) => item.postedBy._id === user.id
   )?.length;
@@ -71,10 +72,10 @@ const Pin = (props) => {
                 </a>
               </div>
               {alreadySaved ? (
-                <button type="button" 
-                className="bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none"
-                
-             >
+                <button
+                  type="button"
+                  className="bg-red-500 opacity-70 hover:opacity-100 text-white font-bold px-5 py-1 text-base rounded-3xl hover:shadow-md outline-none"
+                >
                   {props.pin.save?.length} Saved
                 </button>
               ) : (
@@ -99,12 +100,10 @@ const Pin = (props) => {
                   className="bg-white flex items-center gap-2 text-black font-bold p-2 pl-4 pr-4 rounded-full opacity-70 hover:shadow-md"
                 >
                   <BsFillArrowUpRightCircleFill />
-                  {props.pin.destination.length > 20
-                    ? props.pin.destination.slice(12, 20)
-                    : props.pin.destination.slice(12)}
+                  {props.pin.destination>15 ? `${props.pin.destination.slice(0,15)}...`:props.pin.destination}
                 </a>
               )}
-              {props.pin.postedBy?._id === user.id && (
+              {props.pin.postedBy?._id === user?.id && (
                 <button
                   type="button"
                   onClick={(e) => {
